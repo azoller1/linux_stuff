@@ -1,0 +1,3 @@
+# Using crunch and aircrack after capture file and WPA handshake is acquired (with aireplay, airodump, etc)
+
+eg. crunch length (two numbers) -t %%,, 123456789 | aircrack-ng -w - capfilename.cap -e essid
