@@ -1,0 +1,31 @@
+# Before attacking. Pre scan work. Use VPN, proxychains, change macaddr, use nmap, etc..
+
+Steps:
+1) Change dns servers, use proxy to hide IP, set-up VPN for extra protection
+2) Use nmap and other tools
+
+# Change DNS resolver, use cloudflare or openvpn
+
+Cloudflare, 1.1.1.1, 1.0.0.1
+
+# nmap
+
+nmap - useful to find out info in the surrounding area or check a domain/webiste, IP addr
+
+# proxychains, good website for proxies=https://spys.one/en/
+
+proxychains(4) - useful to run any program/service through proxies to help hide identity.
+
+eg.
+
+proxychains4 firefox (can type in domain to go directly to it)
+
+proxychains4 aircrack-ng etc...
+
+# macchanger, very easy to use
+
+macchanger --parameters
+
+# use free or paid vpns, good website
+
+
